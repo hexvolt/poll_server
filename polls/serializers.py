@@ -1,4 +1,5 @@
-from rest_framework.serializers import ModelSerializer
+from rest_framework import serializers
+from rest_framework.serializers import ChoiceField, ModelSerializer, Serializer
 
 from polls.models import Question, Choice
 
@@ -19,3 +20,13 @@ class QuestionSerializer(ModelSerializer):
         model = Question
         fields = ('id', 'question_text', 'pub_date', 'choices')
         read_only_fields = ('id', 'pub_date')
+
+
+class VoteSerializer(Serializer):
+
+    choice = serializers.PrimaryKeyRelatedField(queryset=Choice.objects.none())
+
+    def __init__(self, question, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.fields['choice'].queryset = question.choices.all()
