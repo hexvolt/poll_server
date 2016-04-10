@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.encoding import python_2_unicode_compatible
 
 
 class Question(models.Model):
@@ -9,6 +10,7 @@ class Question(models.Model):
     class Meta:
         ordering = ['-pub_date']
 
+    @python_2_unicode_compatible
     def __str__(self):
         return self.question_text
 
@@ -25,5 +27,6 @@ class Choice(models.Model):
         self.votes += 1
         self.save()
 
+    @python_2_unicode_compatible
     def __str__(self):
         return self.choice_text
