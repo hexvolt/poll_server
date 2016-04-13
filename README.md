@@ -8,12 +8,12 @@ instances, following logic of Django's tutorial application.
 
 Setting up and Installation
 ---------------------------
-1. Clone the project
+* Clone the project
 
 
     git clone git@bitbucket.org:hexvolt/poll-server.git
 
-2. Set up your environment
+* Set up your environment
 
 This project is intended to work with Python 3+, however it may support
 Python 2.7 as well. If you are going to work with Python 3 (preferable) - it is
@@ -24,7 +24,20 @@ your virtualenv folder:
     cd <env_name>
     source bin/activate
 
-3. Install requirements and run the project
+* Set up RabbitMQ
+
+Install a RabbitMQ server and set up its users and permissions if you
+didn't do that before:
+
+
+    rabbitmqctl add_user <username> <password>
+    sudo rabbitmqctl set_permissions guest ".*" ".*" ".*"
+
+Write down the parameters you've' just used for configuration into your
+environment variables or to the setting.py file (see RABBITMQ_USER,
+RABBITMQ_PASSWORD, etc)
+
+* Finally install the requirements and run the project
 
 After activating your virtualenv, go to the folder with cloned project and run:
 
