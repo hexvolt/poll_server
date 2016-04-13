@@ -11,7 +11,8 @@ Setting up and Installation
 * Clone the project
 
 
-    git clone git@bitbucket.org:hexvolt/poll-server.git
+
+    git clone git@bitbucket.org:hexvolt/poll_server.git
 
 * Set up your environment
 
