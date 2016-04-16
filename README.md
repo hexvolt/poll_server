@@ -27,8 +27,8 @@ your virtualenv folder:
 
 * Set up RabbitMQ
 
-Install a RabbitMQ server and set up its users and permissions if you
-didn't do that before:
+[Install a RabbitMQ](https://www.rabbitmq.com/download.html) server and set
+up its users and permissions if you didn't do that before:
 
 
     rabbitmqctl add_user <username> <password>
