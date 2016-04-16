@@ -28,5 +28,10 @@ class PublisherConfig(AppConfig):
             on_model_delete, rabbit_client=rabbit_client
         )
 
-        post_save.connect(receiver=model_save_handler, weak=False)
-        post_delete.connect(receiver=model_delete_handler, weak=False)
+        from polls.models import Choice, Question
+
+        post_save.connect(model_save_handler, sender=Choice, weak=False)
+        post_save.connect(model_save_handler, sender=Question, weak=False)
+
+        post_delete.connect(model_delete_handler, sender=Choice, weak=False)
+        post_delete.connect(model_delete_handler, sender=Question, weak=False)
